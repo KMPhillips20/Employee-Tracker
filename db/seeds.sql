@@ -1,62 +1,37 @@
--- President --
-    -- Senior Manager -- 
-        -- Theo Von --
-    -- Assistant Manager --
-        -- Logan Paul --
-    -- Head of Board --
-        -- Kevin Hart --
--- Pro Shop--
-    -- Mens Pro --
-        -- Tiger Woods --
-    -- Womens Pro --
-        -- Lexi Thompson --
-    -- Bag Room -- 
-        -- Mike Cowan --
--- Human Resources --
-    -- Director --
-        -- Diana Smith --
-    -- Specialist --
-        -- Jack McGoff
--- Grounds Crew --
-    -- Superintendent -- 
-        -- Kevin Lutz --
-    -- Mechanic --
-        -- Rick Bonham --
-    -- Manual Labor -- 
-        -- Mark Tucker
-
-
+USE employee_db;
 INSERT INTO deparment (name) 
     VALUES
-    ('President'), -- 1 --
-    ('Pro Shop'), -- 2 --
-    ('Human Resources'), -- 3 --
-    ('Grounds Crew'); -- 4 --
+    ('President'),
+    ('Pro Shop'),
+    ('Human Resources'),
+    ('Grounds Crew'); 
 
 INSERT INTO role (title, salary, department_id) 
     VALUES
-    ('Senior Manager '), -- 1 --
-    ('Assistant Manager'), -- 1 --
-    ('Head of Board '), -- 1 --
-    ('Mens Pro'),  -- 2 -- 
-    ('Womens Pro'), -- 2 --
-    ('Bag Room'), -- 2 --
-    ('Director '), -- 3 --
-    ('Specialist'), -- 3 --
-    ('Superintendent'), -- 4 --
-    ('Mechanic'), -- 4 --
-    ('Manual Labor'),-- 4 --
+    ('Senior Manager', 250000, 1), 
+    ('Assistant Manager', 200000, 1), 
+    ('Head of Board', 180000, 1),
+    ('Mens Pro', 160000, 2),
+    ('Womens Pro', 140000, 2),
+    ('Bag Room', 120000, 2),
+    ('Director',100000, 3),
+    ('Specialist', 90000, 3),
+    ('Superintendent', 80000, 4),
+    ('Spray Tech', 75000, 4),
+    ('Mechanic', 70000,  4),
+    ('Manual Labor', 65000 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
     VALUES
-    ('Theo', 'Von'), -- 1 --
-    ('Logan', 'Paul'), -- 1 --
-    ('Kevin', 'Hart'), -- 1 --
-    ('Tiger', 'Woods'), -- 2 --
-    ('Lexi', 'Thompson'), --2 --
-    ('Mike', 'Cowan'), -- 2 --
-    ('Diana', 'Smith'), -- 3 --
-    ('Jack', 'McGoff'), -- 3 --
-    ('Kevin', 'Lutz'), -- 4 --
-    ('Rick', 'Bonham'), -- 4 --
-    ('Mark', 'Tucker'), -- 4 --
+    ('Theo', 'Von', 1, null),
+    ('Logan', 'Paul', 2, 1),
+    ('Kevin', 'Hart', 3, 1),
+    ('Tiger', 'Woods', 4, null),
+    ('Lexi', 'Thompson', 5, 4),
+    ('Mike', 'Cowan', 6, 4),
+    ('Diana', 'Smith', 7, null),
+    ('Jack', 'McGoff', 8, 7),
+    ('Kevin', 'Lutz', 9, null ),
+    ('Kyle', 'Phillips' 10, 9),
+    ('Rick', 'Bonham', 11, 9),
+    ('Mark', 'Tucker', 12, 9);
