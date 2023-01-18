@@ -1,5 +1,5 @@
 USE employee_db;
-INSERT INTO deparment (name) 
+INSERT INTO department (name) 
     VALUES
     ('President'),
     ('Pro Shop'),
@@ -14,12 +14,12 @@ INSERT INTO role (title, salary, department_id)
     ('Mens Pro', 160000, 2),
     ('Womens Pro', 140000, 2),
     ('Bag Room', 120000, 2),
-    ('Director',100000, 3),
+    ('Director', 100000, 3),
     ('Specialist', 90000, 3),
     ('Superintendent', 80000, 4),
     ('Spray Tech', 75000, 4),
     ('Mechanic', 70000,  4),
-    ('Manual Labor', 65000 4);
+    ('Manual Labor', 65000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
     VALUES
@@ -32,6 +32,8 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id)
     ('Diana', 'Smith', 7, null),
     ('Jack', 'McGoff', 8, 7),
     ('Kevin', 'Lutz', 9, null ),
-    ('Kyle', 'Phillips' 10, 9),
+    ('Kyle', 'Phillips', 10, 9),
     ('Rick', 'Bonham', 11, 9),
     ('Mark', 'Tucker', 12, 9);
+
+    
