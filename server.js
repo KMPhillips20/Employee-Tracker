@@ -12,35 +12,44 @@ const db = mysql.createConnection({
 
 const selectOne = (type) => {
     switch (type) {
-        case 'VIEW THE EMPLOYEES': {
+        case 'VIEW EMPLOYEES': {
             db.query('SELECT * FROM employee', (err, employees) => {
                 console.table(employees);
+                init();
             });
+            break;
         }
-        case 'VIEW THE DEPARTMENTS': {
+        case 'VIEW DEPARTMENTS': {
             db.query('SELECT * FROM department', (err, departments) => {
                 console.table(departments);
+                init();
             });
+            break;
         }
-        case 'VIEW ALL ROLES': {
+        case 'VIEW ROLES': {
             db.query('SELECT * FROM role', (err, roles) => {
                 console.table(roles);
+                init();
             });
+            break;
         }
     }
 }
 
+const init = () => {
+    prompt({
+        type: 'rawlist',
+        message: 'Please select one of the following choices!',
+        choices: [
+            'VIEW EMPLOYEES',
+            'VIEW DEPARTMENTS',
+            'VIEW ROLES',
+        ],
+        name: 'type',
+    })
+        .then((answers) => {
+            selectOne(answers.type);
+        });
+};
 
-prompt({
-    type: 'rawlist',
-    message: 'Please select one of the following choices!',
-    choices: [
-        'VIEW THE EMPLOYEES',
-        'VIEW THE DEPARTMENTS',
-        'VIEW THE ROLES',
-    ],
-    name: 'type',
-})
-.then((answers) =>{
-    selectOne(answers.type);
-});
+init();
