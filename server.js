@@ -10,7 +10,7 @@ const db = mysql.createConnection({
 
 
 
-const chooseOption = (type) => {
+const selectOne = (type) => {
     switch (type) {
         case 'VIEW THE EMPLOYEES': {
             db.query('SELECT * FROM employee', (err, employees) => {
@@ -30,3 +30,17 @@ const chooseOption = (type) => {
     }
 }
 
+
+prompt({
+    type: 'rawlist',
+    message: 'Please select one of the following choices!',
+    choices: [
+        'VIEW THE EMPLOYEES',
+        'VIEW THE DEPARTMENTS',
+        'VIEW THE ROLES',
+    ],
+    name: 'type',
+})
+.then((answers) =>{
+    selectOne(answers.type);
+});
