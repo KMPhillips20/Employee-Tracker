@@ -33,7 +33,7 @@ const answers = await prompt ([
         choices: mangers,
     }
 ])
-insert('employee', answers);
+
 
 
 
@@ -54,7 +54,7 @@ const anwsers = await prompt([
         choices: departments,
     }
 ])
-insert('role', answers);
+
 
 
 
