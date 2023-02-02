@@ -6,50 +6,35 @@ require('console.table');
 const db = mysql.createConnection({
     user: "root",
     database: "employee_db",
-});
+},
+console.log("You are now coonected to employee_db")
+);
 
-
-
-const selectOne = (type) => {
-    switch (type) {
-        case 'VIEW EMPLOYEES': {
-            db.query('SELECT * FROM employee', (err, employees) => {
-                console.table(employees);
-                init();
-            });
-            break;
-        }
-        case 'VIEW DEPARTMENTS': {
-            db.query('SELECT * FROM department', (err, departments) => {
-                console.table(departments);
-                init();
-            });
-            break;
-        }
-        case 'VIEW ROLES': {
-            db.query('SELECT * FROM role', (err, roles) => {
-                console.table(roles);
-                init();
-            });
-            break;
-        }
+const answers = await prompt ([
+    {
+        name: "first_name",
+        message: "New hire first name?"
+    },
+    {
+        name: "last_name",
+        message: "New hire last name?"
+    },
+    {
+        type: "rawlist",
+        name: "role_id",
+        message: "New hire role?",
+        choices: roles,
+    },
+    {
+        type: "rawlist",
+        name: "manager_id",
+        message: "Who is your manager?",
+        choices: mangers,
     }
-}
+])
 
-const init = () => {
-    prompt({
-        type: 'rawlist',
-        message: 'Please select one of the following choices!',
-        choices: [
-            'VIEW EMPLOYEES',
-            'VIEW DEPARTMENTS',
-            'VIEW ROLES',
-        ],
-        name: 'type',
-    })
-        .then((answers) => {
-            selectOne(answers.type);
-        });
-};
 
-init();
+
+
+
+
