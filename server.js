@@ -10,6 +10,7 @@ const db = mysql.createConnection({
 console.log("You are now coonected to employee_db")
 );
 
+
 const answers = await prompt ([
     {
         name: "first_name",
@@ -32,7 +33,28 @@ const answers = await prompt ([
         choices: mangers,
     }
 ])
+insert('employee', answers);
 
+
+
+
+const anwsers = await prompt([
+    {
+        name: "title",
+        message: "What is the position title?"
+    },
+    {
+        name: "salary",
+        message: "What is the salary for the new position?"
+    },
+    {
+        type: "rawlist",
+        name: "department_id",
+        message: "What department does this poistion belong in?",
+        choices: departments,
+    }
+])
+insert('role', answers);
 
 
 
