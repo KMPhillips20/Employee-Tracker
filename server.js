@@ -56,6 +56,8 @@ const anwsers = await prompt([
 ])
 
 
+
+
 const anwsers = await prompt ([{
     name: "name",
     message: "New department name?"
@@ -63,6 +65,18 @@ const anwsers = await prompt ([{
 ])
 
 
+const answers = await prompt ({
+    type: "rawlist",
+    message: "Please pick one to add to.",
+    chocies: [
+        "View all Departments",
+        "View all Employess",
+        "View all Roles",
+        "Add a Department",
+        "Add an Employee",
+        "Add a Role",
+    ]
+})
 
 
 
