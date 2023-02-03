@@ -10,6 +10,17 @@ const db = mysql.createConnection({
 console.log("You are now coonected to employee_db")
 );
 
+const chooseAll = async (table) => {
+    return await db.promise().query("SLECT * FROM " + table);
+}; 
+
+const insert = (table, info) => {
+    db.query("INSERT INTO ?? SET ?", [table,info], (err) => {
+        if (err) return console.error(err);
+        console.log("\nSuccessfully created!\n");
+        init();
+    });
+};
 
 const answers = await prompt ([
     {
