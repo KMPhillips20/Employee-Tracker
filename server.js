@@ -56,6 +56,12 @@ const anwsers = await prompt([
 ])
 
 
+const anwsers = await prompt ([{
+    name: "name",
+    message: "New department name?"
+}
+])
+
 
 
 
