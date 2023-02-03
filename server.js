@@ -10,6 +10,7 @@ const db = mysql.createConnection({
 console.log("You are now coonected to employee_db")
 );
 
+
 const chooseAll = async (table) => {
     return await db.promise().query("SLECT * FROM " + table);
 }; 
@@ -21,6 +22,18 @@ const insert = (table, info) => {
         init();
     });
 };
+
+
+const newEmployee = async () => {
+    const [roleInfo] = await chooseAll("role");
+    const [employeeInfo] = await chooseAll("employee");
+    const roles = roleInfo.map(role => {
+        return {
+            name: role.title,
+            value: role.id
+        }
+    });
+}
 
 const answers = await prompt ([
     {
