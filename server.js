@@ -7,7 +7,7 @@ const db = mysql.createConnection({
     user: "root",
     database: "employee_db",
 },
-    console.log("You are now coonected to employee_db")
+    console.log("You are now connected to employee_db")
 );
 
 
@@ -90,20 +90,23 @@ const newRole = async () => {
             name: "department_id",
             message: "What department does this poistion belong in?",
             choices: departments,
-        }
+        },
     ])
     insert("role",answers);
 };
 
 
+// -------- NEW DEPARTMENT ----------
 
-
+const newDepartment = async () => {
     const anwsers = await prompt([{
         name: "name",
         message: "New department name?"
     }
     ])
-
+    insert("department", answers);
+}
+    
 
     const answers = await prompt({
         type: "rawlist",
