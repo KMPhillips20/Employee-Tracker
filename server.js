@@ -124,7 +124,7 @@ const pickOption = async (type) => {
             break;
         }
         case "View all Roles": {
-            const [info] = await chooseAll("roke");
+            const [info] = await chooseAll("role");
             console.table(info);
             init();
             break;
@@ -147,10 +147,10 @@ const pickOption = async (type) => {
 const init = async () => {
     const answers = await prompt({
         type: "rawlist",
-        message: "Please pick one to add to.",
+        message: "Please pick to view or one to add to.",
         choices: [
             "View all Departments",
-            "View all Employess",
+            "View all Employees",
             "View all Roles",
             "Add new Department",
             "Add new Employee",
