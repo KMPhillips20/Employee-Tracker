@@ -12,13 +12,13 @@ const db = mysql.createConnection({
 
 
 const chooseAll = async (table) => {
-    return await db.promise().query("SLECT * FROM " + table);
+    return await db.promise().query("SELECT * FROM " + table);
 };
 
 const insert = (table, info) => {
     db.query("INSERT INTO ?? SET ?", [table, info], (err) => {
         if (err) return console.error(err);
-        console.log("\nSuccessfully created!\n");
+        console.log('\nSuccessfully created!\n');
         init();
     });
 };
@@ -76,7 +76,7 @@ const newRole = async () => {
             value: department.id
         }
     });
-    const anwsers = await prompt([
+    const answers = await prompt([
         {
             name: "title",
             message: "What is the position title?"
@@ -99,7 +99,7 @@ const newRole = async () => {
 // -------- NEW DEPARTMENT ----------
 
 const newDepartment = async () => {
-    const anwsers = await prompt([{
+    const answers = await prompt([{
         name: "name",
         message: "New department name?"
     }
@@ -144,18 +144,22 @@ const pickOption = async (type) => {
     }
 }
 
-            const answers = await prompt({
-                type: "rawlist",
-                message: "Please pick one to add to.",
-                chocies: [
-                    "View all Departments",
-                    "View all Employess",
-                    "View all Roles",
-                    "Add a Department",
-                    "Add an Employee",
-                    "Add a Role",
-                ]
-            })
+const init = async () => {
+    const answers = await prompt({
+        type: "rawlist",
+        message: "Please pick one to add to.",
+        choices: [
+            "View all Departments",
+            "View all Employess",
+            "View all Roles",
+            "Add new Department",
+            "Add new Employee",
+            "Add new Role",
+        ],
+        name : "type",
+    })
+    pickOption(answers.type)
+}
 
-
+init();
 
