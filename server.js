@@ -92,7 +92,7 @@ const newRole = async () => {
             choices: departments,
         },
     ])
-    insert("role",answers);
+    insert("role", answers);
 };
 
 
@@ -106,20 +106,56 @@ const newDepartment = async () => {
     ])
     insert("department", answers);
 }
-    
 
-    const answers = await prompt({
-        type: "rawlist",
-        message: "Please pick one to add to.",
-        chocies: [
-            "View all Departments",
-            "View all Employess",
-            "View all Roles",
-            "Add a Department",
-            "Add an Employee",
-            "Add a Role",
-        ]
-    })
+// ----- Options -----
+
+const pickOption = async (type) => {
+    switch (type) {
+        case "View all Employees": {
+            const [info] = await chooseAll("employee");
+            console.table(info);
+            init();
+            break;
+        }
+        case "View all Departments": {
+            const [info] = await chooseAll("department");
+            console.table(info);
+            init();
+            break;
+        }
+        case "View all Roles": {
+            const [info] = await chooseAll("roke");
+            console.table(info);
+            init();
+            break;
+        }
+        case "Adde new Employee": {
+            await newEmployee();
+            break;
+        }
+        case "Adde new Department": {
+            await newDepartment();
+            break;
+        }
+        case "Adde new Role": {
+            await newRole();
+            break;
+        }
+    }
+}
+
+            const answers = await prompt({
+                type: "rawlist",
+                message: "Please pick one to add to.",
+                chocies: [
+                    "View all Departments",
+                    "View all Employess",
+                    "View all Roles",
+                    "Add a Department",
+                    "Add an Employee",
+                    "Add a Role",
+                ]
+            })
 
 
 
