@@ -33,7 +33,7 @@ const newEmployee = async () => {
             value: role.id
         }
     });
-    const mangers = employeeInfo.map(employee => {
+    const managers = employeeInfo.map(employee => {
         return {
             name: employee.first_name + " " + employee.last_name,
             value: employee.id
@@ -58,7 +58,7 @@ const newEmployee = async () => {
             type: "rawlist",
             name: "manager_id",
             message: "Who is your manager?",
-            choices: mangers,
+            choices: managers,
         }
     ])
     insert("employee", answers);
@@ -129,15 +129,15 @@ const pickOption = async (type) => {
             init();
             break;
         }
-        case "Adde new Employee": {
+        case "Add new Employee": {
             await newEmployee();
             break;
         }
-        case "Adde new Department": {
+        case "Add new Department": {
             await newDepartment();
             break;
         }
-        case "Adde new Role": {
+        case "Add new Role": {
             await newRole();
             break;
         }
@@ -147,7 +147,7 @@ const pickOption = async (type) => {
 const init = async () => {
     const answers = await prompt({
         type: "rawlist",
-        message: "Please pick to view or one to add to.",
+        message: "Please pick one.",
         choices: [
             "View all Departments",
             "View all Employees",
@@ -156,7 +156,7 @@ const init = async () => {
             "Add new Employee",
             "Add new Role",
         ],
-        name : "type",
+        name: "type",
     })
     pickOption(answers.type)
 }
